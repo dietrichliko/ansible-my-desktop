@@ -1,11 +1,15 @@
 ---
 - hosts: localhost
   become: yes
+
+  roles:
+    - robertdebock.rpmfusion
   
   tasks:
     - name: Install misc packages
       package:
         name:
+          - zsh
           - gnome-tweaks
           - git-lfs
         state: present 
