@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  become: yes
+  
+  tasks:
+    - name: Install misc packages
+      package:
+        name:
+          - gnome-tweaks
+          - git-lfs
+        state: present 
