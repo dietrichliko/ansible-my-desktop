@@ -4,8 +4,48 @@
 
   roles:
     - robertdebock.rpmfusion
+    - darkwizard242.googlechrome
   
   tasks:
+    - name: Update core group
+      dnf:
+        name: "@core"
+        state: latest
+
+    - name: Multimedia codecs
+      dnf:
+        name:
+          - gstreamer1-plugins-bad-*
+          - gstreamer1-plugins-good-*
+          - gstreamer1-plugins-base
+          - gstreamer1-plugin-openh264 
+          - gstreamer1-libav
+        exclude:
+          - gstreamer1-plugins-bad-free-devel  
+
+    - name: MP3
+      dnf:
+        name: 
+          - lame*
+        exclude: 
+          - lame-devel
+
+    - name: Multimedia
+      dnf:
+        name: "@Multimedia"
+        state: latest
+
+    - name: Multimedia apps
+      dnf:
+       name: vlc
+       state: present
+
+    - name: Mail applications
+      dnf:
+        name:
+          - thunderbird
+          - geary
+     
     - name: Install misc packages
       package:
         name:
